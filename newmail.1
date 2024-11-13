@@ -1,0 +1,137 @@
+.\"  Copyright (c) 2004,6  Joey Schulze <joey@infodrom.org>
+.\"
+.\"  This program is free software; you can redistribute it and/or modify
+.\"  it under the terms of the GNU General Public License as published by
+.\"  the Free Software Foundation; either version 2 of the License, or
+.\"  (at your option) any later version.
+.\"
+.\"  This program is distributed in the hope that it will be useful,
+.\"  but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\"  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\"  GNU General Public License for more details.
+.\"
+.\"  You should have received a copy of the GNU General Public License
+.\"  along with this program; if not, write to the Free Software
+.\"  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.TH NEWMAIL 1 "February 8th, 2006" "Infodrom Oldenburg" "Mail Utilities"
+.SH NAME
+newmail \- biff like tool for the terminal
+.SH SYNOPSIS
+.B newmail
+.RB [ \-b ]
+.RB [ \-h ]
+.RB [ "\-i \fIinterval\fB" ]
+.RB [ \-r ]
+.RB [ \-w ]
+.RI [ " mbox " [...]]
+.SH DESCRIPTION
+The newmail program monitors a given set of mailboxes and looks for
+new mail.  If new mail is received the sender and subject will be
+written on the terminal it was started from.  By default
+.B newmail
+puts itself in the background so the console is still usable.
+
+.B newmail
+is able to monitor arbitrary numbers of mailbox files.  If no mailbox
+was specified on the commandline it will monitor the default mailbox,
+which may be overwritten by the
+.B MAIL
+environment variable.
+
+If more than one mailbox is being monitored, a prefix is printed for
+each mail line so the user can distinguish between the different
+mailbox files.  By default the prefix is the name of the mailbox
+without its path.
+
+If a mailbox is specified as
+.IR path = string
+then
+.I string
+will be used as prefix for mails received in the mailbox denoted by
+.IR path .
+
+.B newmail
+is able to decode header lines when non-ascii characters are
+transported.  They will be displayed properly if the locale
+.RB ( LC_CTYPE )
+is set accordingly.
+.SH OPTIONS
+.TP
+.B \-b
+Ring a bell after one or more incoming mails have been detected for at
+least one mailbox.
+.TP
+.B \-h
+Print a help message.
+.TP
+.BI \-i " interval"
+Set the interval between two mailbox checks to
+.IR interval " seconds."
+The default is 60 seconds which is suffient for the terminal.  For the
+use inside of a window or dock application a lower value may be
+prudent.
+.TP
+.B \-r
+Emit raw data from the mail.  This will bypass routines to decode
+character encodings used for mail headers as described in RFC 2047.
+This may be useful for
+window applications that want to decode the strings on their own.
+.TP
+.B \-w
+Run as window application.  This will prevent
+.B newmail
+from moving itself into the background so its output can be used as
+input for a window application.  This will also change the output
+format slightly and prevent a bell to be rung after new mail has been
+received.
+.SH "OUTPUT FORMAT"
+The output format differs from being read by humans and programs
+.RB ( \-w ).
+
+    newmail:
+       >> Mail from <from> - <subject>
+       >> Priority mail from <from> - <subject>
+    
+       >> <folder>: Mail from <from> - <subject>
+       >> <folder>: Priority mail from <from> - <subject>
+    
+    newmail -w:
+       <from> - <subject>
+       Priority: <from> - <subject>
+    
+       <folder>: <from> - <subject>
+       <folder>: Priority: <from> - <subject>
+
+It should be easy for third party programs which are interested in such
+information to parse the output when
+.B newmail
+is running with the
+.B \-w
+option.
+.SH ENVIRONMENT
+.B newmail
+supports the following environment variables:
+.TP
+LANG
+Locale setting for the output character set. 
+.TP
+LC_CTYPE
+Locale setting only for the output character set. 
+.TP
+MAIL
+Full path of the user's spool mailbox.
+.SH NOTES
+This program is inspired by the
+.B newmail
+program from the Elm interactive mail program.  It is a rewrite from
+scratch though.
+
+Many thanks go to Dave Taylor and the Elm Development Group who have
+provided me with a great mail program for several years.  Many
+additional thanks go to the former lead developer Dave Taylor who
+started the program back in 1986.
+.SH "SEE ALSO"
+.BR locale (7).
+.SH AUTHOR
+Joey Schulze <joey@infodrom.org>

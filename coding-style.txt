@@ -1,0 +1,17 @@
+ 1. Delimit multiple parameters with comma and space
+    (i.e. (foo, bar) instead of (foo,bar)
+
+ 2. In terms delimit the list of parameters from the function name
+    with a single space (i.e. func (foo) instead of func(foo))
+
+ 3. Don't use a space between a function name and an empty argument
+    list.
+
+ 4. In expressions leave out that space
+
+ 5. In short expressions feel free to leave out the spaces
+
+ 6. In longer and more complicated expressions spaces should be used
+    between operands
+
+ 7. Lines should not be longer than 79 characters

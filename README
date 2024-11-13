@@ -1,0 +1,76 @@
+nemail is a small program that puts itself in the background and
+watches mailboxes in order to report when new mail has been arrived.
+This will be reported on the terminal it was started.  The output can
+also be integrated in graphical programs.
+
+This package was inspired by the Elm component newmail.  The Elm Mail
+System was a great mail program until Michael Elkins started writing
+Mutt which quickly became faster, more flexible and easier to use.
+However, there has been no replacement for the ``newmail'' program
+which is subject of this package.
+
+Due to the Elm license which is not compatible with the GNU General
+Public License (GPL) it was not possible to combine the old code with
+code licensed under the GNU GPL.  As a result this project had to be
+started from scratch.
+
+Many thanks go to the Elm Development Group who have provided me with
+a great mail program for several years.  Many thanks to Dave Taylor
+who started the program back in 1986 and has even moved away from
+programming altogether.
+
+
+Installation
+------------
+
+On a GNU/Linux system running 'make' as user and 'make install' as
+root is sufficient.  If you don't want to install the program in /usr
+install it with 'make prefix=/usr/local install'.
+
+On other systems you may have to tweak the code a little bit since
+some include files may not be present on these systems.  Feel free to
+contact the author with details.
+
+Automake (and thus configure) is not used intentionally.
+
+
+More Information
+----------------
+
+I have set up a couple of web pages describing the newmail package and
+will publish additional information that may be useful to newmail
+users.  Please check out:
+
+	     <http://www.infodrom.org/projects/newmail/>
+
+There is a mailing list set up on lists.infodrom.org that deals with
+development and discussions of the newmail utility.  If you have
+questions or suggestions please subscribe to the list and post there.
+
+The source code for this package is also available through anonymous
+CVS at :pserver:anonymous@cvs.infodrom.org:/var/cvs/infodrom using the
+module newmail.  Accessing this is described in detail at the web
+pages mentioned above.
+
+Please don't contact me personally if you don't have confidential
+questions or information.  Please use the mailing list from above
+instead.  Using the mailing list has a couple of advantages.  Your
+question and comments are archived publically and properly so they can
+be used later as well.  As another bonus somebody else than me could
+answer a question, hence not incrementing my workload and it's more
+difficult to forget about it.
+
+The submission address for the mailing list is:
+
+		 infodrom-newmail@lists.infodrom.org
+
+To subscribe, send a mail to majordomo@lists.infodrom.org with the
+body "subscribe infodrom-newmail" -- or send a mail to SmartList at
+infodrom-newmail-request@lists.infodrom.org with the subject
+"subscribe".
+
+Good luck!
+Enjoy the software!
+
+Joey Schulze
+joey@infodrom.org
